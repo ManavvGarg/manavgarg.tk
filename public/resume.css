@@ -1,0 +1,110 @@
+.resume-div {
+    background-color: white;
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 20%;
+    height: 1100px;
+    width: 1214px;
+    display: flex;
+    position:relative;
+  
+  }
+  
+  .resumeDiv-btn {
+    position: relative;
+    height: 30px;
+    right: 0;
+    left: 89%;
+    border: 1px solid black;
+    top: 20px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.resHeading {
+    color: black;
+    left: -4%;
+    top: 10%;
+    margin-left: 0;
+    position: relative;
+}
+
+.H { 
+    width: 100%;
+ }
+
+ .resQuote {
+     color: black;
+     left: 0;
+     top: 150px;
+     width: 1050px;
+     border-top: 2px solid black;
+     border-bottom: 2px solid black;
+     padding-top: 20px;
+     padding-bottom: 20px;
+     margin-left: -4%;
+     position: relative;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+.resEdu {
+  margin-left: -4%;
+  position: relative;
+}
+
+.resEdu ul {
+  list-style: none;
+}
+
+.resEduDiv {
+  border-radius: 2px;
+  left: 0;
+  width: 45%;
+  top: 20px;
+  display: flex;
+  position: relative;
+  color: black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.resExp {
+  margin-left: -4%;
+  position: relative;
+}
+
+.resExp ul {
+  list-style: none;
+}
+
+.resExpDiv {
+  border-radius: 2px;
+  left: 0;
+  width: 45%;
+  display: flex;
+  position: relative;
+  color: black;
+}
+
+.resLang {
+  margin-left: -4%;
+  position: relative;
+}
+
+.resLang ul {
+  list-style: none;
+}
+
+.resLangDiv {
+  border-radius: 2px;
+  left: 0;
+  width: 45%;
+  display: flex;
+  position: relative;
+  color: black;
+}

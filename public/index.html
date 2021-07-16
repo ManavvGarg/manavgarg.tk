@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <title>Manav Garg | Portfolio</title>
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+    <meta content="Hey! I'm Manav, Nice to meet you 👋. I'm a student as well as a software developer who is passionate about making awesome things." name="description" />
+    <meta content="Manav, Garg, Globa Sevak, Programming, Coder, ReactJS, Freelance, Python, MySql, PostgreSQL, HTML5, CSS3, SASS, PUG, RUBY, NODE, Javascript" name="keywords" />
+    
+    
+    <meta name="title" content=Manav Garg | Portfolio />
+    <meta name="description" content="Hey! I'm Manav, Nice to meet you 👋. I'm a student as well as a software developer who is passionate about making awesome things." />
+
+   
+    <meta property="og:type" content="webpage" />
+    <meta property="og:url" content="https://manavgarg.tk/" />
+    <meta property="og:title" content=Manav Garg | Portfolio />
+    <meta property="og:description" content="Hey! I'm Manav, Nice to meet you 👋. I'm a student as well as a software developer who is passionate about making awesome things." />
+    
+    
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://manavgarg.tk/" />
+    <meta property="twitter:title" content=Manav Garg | Portfolio />
+    <meta property="twitter:description" content="Hey! I'm Manav, Nice to meet you 👋. I'm a student as well as a software developer who is passionate about making awesome things." />
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css" integrity="sha512-3icgkoIO5qm2D4bGSUkPqeQ96LS8+ukJC7Eqhl1H5B2OJMEnFqLmNDxXVmtV/eq5M65tTDkUYS/Q0P4gvZv+yA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        const carouselText = [
+    {text: "Software Developer", color: "white"},
+    {text: "Student", color: "white"},
+    {text: "Tech Enthusiast", color: "white"},
+    {text: "Chef", color: "white"}
+  ]
+  
+  $(async function() {
+    carousel(carouselText, "#feature-text")
+  });
+  
+  async function typeSentence(sentence, eleRef, delay = 100) {
+    const letters = sentence.split("");
+    console.log(letters)
+    let i = 0;
+    while(i < letters.length) {
+      await waitForMs(delay);
+      $(eleRef).append(letters[i]);
+      i++
+    }
+    return;
+  }
+  
+  async function deleteSentence(eleRef) {
+    const sentence = $(eleRef).html();
+    const letters = sentence.split("");
+    let i = 0;
+    while(letters.length > i) {
+      await waitForMs(100);
+      letters.pop();
+      $(eleRef).html(letters.join(""));
+    }
+  }
+  
+  async function carousel(carouselList, eleRef) {
+      var i = 0;
+      while(true) {
+        updateFontColor(eleRef, carouselList[i].color)
+        await typeSentence(carouselList[i].text, eleRef);
+        await waitForMs(1500);
+        await deleteSentence(eleRef);
+        await waitForMs(500);
+        i++
+        if(i >= carouselList.length) {i = 0;}
+      }
+  }
+  
+  async function updateFontColor(eleRef, color) {
+    $(eleRef).css('color', color);
+  }
+  
+  async function waitForMs(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+  }
+
+
+
+
+
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

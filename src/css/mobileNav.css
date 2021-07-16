@@ -1,0 +1,107 @@
+.mobileNav-bottom {
+    display: none;
+}
+
+#header{
+    margin-left: 10vh;
+    
+}
+
+.glassSpotifyUp h4{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    margin: 8% 0 5% -8%;
+    position: relative;
+}
+
+@media (max-width: 992px) {
+
+    section#about{ height: 90vh; }
+    section#projects{ height: 90vh; }
+    section#contact{ height: 90vh; }
+    section#formMail{ height: 23vh; }
+    #header {
+        margin-left: 10vh;
+        margin-top: 40vh;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    #header .container{
+        margin-left: -2vh;
+    }
+
+    .mobileNav-bottom {
+        display: flex;
+        width: 100%;
+        height: 120px;
+        margin-top: 20.5%;
+        border-top: white 1px solid;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+        position:fixed;
+        z-index: 6000;
+        background-color: black;
+    }
+
+    .mobileNav-bottom ul {
+
+        justify-content: center;
+        align-items: center;
+        display: inline-flex;
+        list-style: none;
+        text-decoration: none;
+        color: white;
+        margin-left: 0;
+    
+    }
+
+    .mobileNav-bottom ul>li {
+        
+        padding-top: 10px;
+        font-size: 30px;
+        border: 1px solid transparent;
+        padding: auto auto auto auto;
+        width: 100%;
+        height: auto;
+        display: inline-block;
+        margin-left: 14%;
+        margin-right: 14%;
+        white-space: nowrap;
+    }
+
+    .mobileNav-bottom ul>li>a {
+        display: flex;
+        color: white;
+        pointer-events: auto !important;
+        cursor: pointer !important;
+    }
+
+    .glassSpotifyUp {
+
+    visibility: visible;
+    width: 15vh;
+    margin-top: 7vh;
+    margin-left: 5vh;
+
+    }
+
+    .glassSpotifyUp h4{
+        visibility: none;
+        display: none;
+    }
+
+    .glassSpotify {
+        width: 15vh;
+        height: 14vh;
+        position: relative;
+      }
+
+    
+
+
+}
+
