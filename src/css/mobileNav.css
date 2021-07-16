@@ -19,6 +19,7 @@
 
 @media (max-width: 992px) {
 
+    .playlistBTN{ display: none; }
     section#about{ height: 90vh; }
     section#projects{ height: 90vh; }
     section#contact{ height: 90vh; }
@@ -28,6 +29,8 @@
         margin-top: 40vh;
         display: inline-block;
         vertical-align: middle;
+        height: 50vh;
+        overflow: hidden;
     }
     #header .container{
         margin-left: -2vh;
@@ -85,7 +88,7 @@
     visibility: visible;
     width: 15vh;
     margin-top: 7vh;
-    margin-left: 5vh;
+    margin-left: 3vh;
 
     }
 
@@ -96,7 +99,7 @@
 
     .glassSpotify {
         width: 15vh;
-        height: 14vh;
+        height: 17vh;
         position: relative;
       }
 

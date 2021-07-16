@@ -2,7 +2,7 @@
 My personal portfolio made entirely with ReactJS, CSS, and SASS (compiled to css).
 
 
-Fetches current playback from spotify to display it on the home(index) page using SpotifyAPI.
+Fetches current playback and all public playlists from spotify to display it on the home(index) page using SpotifyAPI.
 
 
 # Credentials

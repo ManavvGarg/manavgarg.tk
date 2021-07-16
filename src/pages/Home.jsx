@@ -12,9 +12,14 @@ import Credits from '../partials/credits';
 import Navbar from '../partials/navbar';
 import MobileNav from '../partials/MobileNav';
 import '../css/mobileNav.css';
-import React, {useState, useEffect} from 'react';
+import '../css/spotifyScroll.css';
+import React, {useState, useEffect, useRef} from 'react';
 
 const Home = () => {
+
+
+  //SPOTIFY
+  // =================================================================================================================================================================
 
   const [songName, setSongName] = useState(`I'm away from keyboard atm!`);
   const [songAlbum, setSongAlbum] = useState();
@@ -22,7 +27,11 @@ const Home = () => {
   const [albumURL, setAlbumURL] = useState(`https://open.spotify.com/user/curiosticgameryt`);
   const [songArtists, setSongArtists] = useState([])
   const [songImage, setSongImage] = useState(`https://i.ibb.co/1GPBBmW/zzz.png`);
-
+  const mainComp = useRef(); // For change ref in changing divs
+  const mainComp2 = useRef(); // For change ref in changing divs
+  const mainComp3 = useRef(); // For change ref in changing divs
+  const mainComp4= useRef(); // For change ref in changing divs
+  const [playlists, setPlaylists] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -89,6 +98,35 @@ const Home = () => {
 
       })
     
+      fetch(`https://api.spotify.com/v1/me/playlists`, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${accessToken}`
+        }
+      }).then(async(responsePlaylist) => {
+        if (!responsePlaylist.ok) {
+          return setError(true)
+        }
+
+        return responsePlaylist.text().then(async(text) => {
+          const n = await JSON.parse(text);
+          var arr2 = [];
+          n.items.forEach(async e=> {
+           await arr2.push(
+
+              <li><img src={e.images[0].url} alt='album cover image' style={{display:'flex', margin: "0 5% 2% 0", position:"relative", float: "left" }} height="45vh" width="45vh" /><a href={e.external_urls.spotify} target="_blank" rel="noreferrer">{e.name}<i class='bx bx-play-circle'></i></a></li>
+
+            )
+          });
+          await setPlaylists(arr2);
+
+
+
+        })
+
+
+      })
 
 
 
@@ -110,9 +148,22 @@ const Home = () => {
 
       }, []);
 
+      // =================================================================================================================================================================
+
       if (loading) return( <div className="loader" style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center"}}><i class='bx bx-loader'></i> Loading...</div> );
       if (error) return( <div className="loader" style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", marginTop:"20%"}}><i class='bx bxs-message-square-error'></i> An error occured! Please refresh the page!</div> );
 
+      //button onclick funtions
+      // =================================================================================================================================================================
+      
+      
+      const playBtn = () => {
+        //console.log(`LMAO LMAO LMAO`)
+        mainComp.current.classList.toggle(`spotifyNoShow`)
+        mainComp2.current.classList.toggle(`spotifyNoShow`)
+        mainComp3.current.classList.toggle(`spotifyNoShow`)
+        mainComp4.current.classList.toggle(`spotifyNoShow`)
+      }
 
     return (
 
@@ -150,7 +201,7 @@ const Home = () => {
     </div>
     
   
-    <div className="glassSpotifyUp">
+    <div className="glassSpotifyUp" ref={mainComp}>
       <a href={songURL} target="_blank" rel="noreferrer">
       <h4>Currently listening to:</h4>
       <div className="glassSpotify" style={{paddingTop: "5%", marginLeft: "10%", justifyContent: "center", alignContent: "center", alignItems: "center"}}>
@@ -158,10 +209,25 @@ const Home = () => {
     <h6 style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", margin: "4% auto 0 auto", position:"relative", fontWeight: "600" }}><a href={songURL} target="_blank" rel="noreferrer" >{songName}</a></h6>
     <h6 style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", margin: "2% auto 0 auto", position:"relative", fontWeight: "400" }}>{songArtists}</h6>
     <h6 style={{display:'flex', justifyContent: "center", alignContent: "center", alignItems:"center", alignSelf:"center", margin: "4% auto 0 auto", position:"relative", opacity:"75%" }}><u><a href={albumURL} target='_blank' rel="noreferrer">{songAlbum}</a></u></h6>
-
+    
       </div>
+      
       </a>
+      <button className="playlistBTN" onClick={() => playBtn()} ref={mainComp3}>My Playlists<i class='bx bxs-chevron-right-circle'></i></button>
       </div>
+
+    <div className="glassSpotifyUp spotifyNoShow" ref={mainComp2}>
+      <h4>Public Playlists</h4>
+      <div className="glassSpotify2" style={{paddingTop: "5%", marginLeft: "10%", justifyContent: "center", alignContent: "center", alignItems: "center"}}>
+      
+      <ul style={{marginLeft: "-2vh"}}>
+        {playlists}
+      </ul>
+    
+      </div>
+      
+      <button className="playlistBTN2 spotifyNoShow" onClick={() => playBtn()} ref={mainComp4}>Go Back<i class='bx bxs-chevron-left-circle'></i></button>
+    </div>
 
   
   </header>
